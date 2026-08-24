@@ -1,0 +1,26 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Grid Cross-Browser Suite" parallel="tests" thread-count="2" data-provider-thread-count="3">
+
+<test name="Chrome Tests">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+        <class name="org.test.LoginTest"/>
+    </classes>
+</test>
+
+<test name="Firefox Tests">
+    <parameter name="browser" value="firefox"/>
+    <classes>
+        <class name="org.test.ProductTest"/>
+    </classes>
+</test>
+
+    <listeners>
+        <!-- 1. Allure's core engine that generates allure-results JSON files -->
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+
+        <!-- 2. Your custom screenshot/video listener -->
+        <listener class-name="org.example.listener.TestListener"/>
+    </listeners>
+</suite>
+
