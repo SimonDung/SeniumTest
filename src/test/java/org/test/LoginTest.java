@@ -21,8 +21,6 @@ public class LoginTest extends BaseTest {
         pages().loginPage()
                 .login(username, password);
 
-        Thread.sleep(20000);
-
         if (loginStatus.equals(true)) {
             Assert.assertEquals(pages().productPage()
                     .getPageTitleText(), "Products", "Login failed or title mismatched!");

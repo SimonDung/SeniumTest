@@ -22,6 +22,5 @@ public class ProductTest extends BaseTest {
     @Test
     public void verifyAllProductInPage() throws InterruptedException {
         pages().productPage().waitUntilLoaded();
-        Thread.sleep(10000);
     }
 }
