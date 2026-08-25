@@ -30,7 +30,7 @@ public class BaseTest {
     @BeforeMethod
     public void setUp(String browser, Method method) throws MalformedURLException {
         // 1. Start video recording named after the current test method
-        VideoManager.startRecording(method);
+//        VideoManager.startRecording(method);
 
         WebDriverManager.chromedriver().setup();
         // Launch a distinct ChromeDriver instance for the current executing thread
