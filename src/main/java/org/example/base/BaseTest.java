@@ -1,6 +1,7 @@
 package org.example.base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.example.config.ConfigManager;
 import org.example.pages.manager.PageObjectManager;
 import org.example.utils.VideoManager;
 import org.openqa.selenium.WebDriver;
@@ -34,12 +35,13 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
         // Launch a distinct ChromeDriver instance for the current executing thread
         WebDriver driver;
-        String gridUrl = "http://localhost:4444/wd/hub"; // URL of your Grid Hub
+        String gridUrl = ConfigManager.get("grid.url"); // URL of your Grid Hub
+
         if (browser.equalsIgnoreCase("firefox")) {
             FirefoxOptions options = new FirefoxOptions();
             // Enable VNC (Live View) and Video Recording on Grid
-            options.setCapability("se:vncEnabled", true);
-            options.setCapability("se:recordVideo", true);
+//            options.setCapability("se:vncEnabled", true);
+//            options.setCapability("se:recordVideo", true);
             driver = new RemoteWebDriver(new URL(gridUrl), options);
         } else {
             ChromeOptions options = new ChromeOptions();
@@ -47,7 +49,7 @@ public class BaseTest {
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ZERO);
-        driver.get("https://www.saucedemo.com/");
+        driver.get(ConfigManager.get("app.url"));
         driverThreadLocal.set(driver);
     }
 

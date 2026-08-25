@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
-                        sh 'mvn clean test'
+                        sh 'mvn clean test -Denv=jenkins'
                     }
                 }
             }
